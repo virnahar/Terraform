@@ -27,38 +27,38 @@
 
 # Benefits of IaC
 
-# Speed
+## Speed
 
 > IaC benefits a company’s IT architecture and workflow as it uses automation to substantially increase the provisioning speed of the infrastructure’s
 > development, testing, and production.
 
-# Consistency
+## Consistency
 
 > Since it is code, it generates the same result every time. It
 > provisioned the same environment every time, enabling improved
 > infrastructure consistency at all times.
 
-# Cost
+## Cost
 
 > One of the main benefits of IaC is, without a doubt, lowering the
 > costs of infrastructure management. With everything automated and
 > organized, engineers save up on time and cost which can be wisely
 > invested in performing other manual tasks and higher-value jobs.
 
-# Minimum Risk
+## Minimum Risk
 
 > IaC allows server configuration that can be documented, logged, and
 > tracked later for reference. Configuration files will be reviewed by a
 > person or policy as a code (sentinel) for security leakages.
 
-# Everything Codified
+## Everything Codified
 
 > The main benefit of IaC is explicit coding to configure files in use.
 > You can share codes with the team, test them to ensure accuracy,
 > maintain uniformity and update your infrastructure into the same flow
 > of IaC.
 
-# Version Controlled, Integrated
+## Version Controlled, Integrated
 
 > Since the infrastructure configurations are codified, we can check-in
 > into version control like GitHub and start versioning it.
@@ -98,7 +98,7 @@ provider "aws" {
 ```shell
  terraform init -upgrade
 ```
-# Multiple Providers
+## Multiple Providers
 
 > You can optionally define multiple configurations for the same
 > provider and select which one to use on a per-resource or per-module
@@ -115,7 +115,7 @@ provider "aws" {
   region = "us-west-2"
   }
 ```
-# Versioning
+## Versioning
 
 > The required\_version setting can be used to constrain which version
 > of the Terraform CLI can be used with your configuration. If the
@@ -158,7 +158,7 @@ $ terraform version
 # Terraform Workflow
 
 > 
-# Terraform Init
+## Terraform Init
 > 
 > The terraform init command is used to initialise a working directory
 > containing Terraform configuration files.
@@ -185,7 +185,7 @@ $ terraform version
 ```
 >is used in order to tell terraform to not copy the existing state to the new remote state location.
 
-# Terraform plan
+## Terraform plan
 
 > The terraform plan command is used to create an execution plan. It
 > will not modify things in infrastructure.
@@ -199,7 +199,7 @@ $ terraform version
 ```shell
  $ terraform plan
 ```
-# Terraform Apply
+## Terraform Apply
 
 > The terraform apply command is used to apply the changes required to
 > reach the desired state of the configuration.
@@ -225,14 +225,14 @@ $ terraform version
 ``` 
 > This -target option works with terraform plan too.
 
-# Terraform Refresh
+## Terraform Refresh
 
 > The terraform refresh command is used to reconcile the state Terraform
 > knows about (via its state file) with the real-world infrastructure.
 > 
 > This does not modify infrastructure but does modify the state file.
 
-# Terraform Destroy
+## Terraform Destroy
 
 > The terraform destroy command is used to destroy the Terraform-managed
 > infrastructure.
@@ -252,7 +252,7 @@ $ terraform version
 ```shell
 $ terraform destroy -target aws_s3_bucket.my_bucket
 ```
-# Terraform Validate
+## Terraform Validate
 
 > The terraform validate command validates the configuration files in a
 > directory.
@@ -271,7 +271,7 @@ $ terraform destroy -target aws_s3_bucket.my_bucket
 ```bash 
  $ terraform validate
 ```
-# Provisioners
+## Provisioners
 > 
 > Provisioners can be used to model specific actions on the local
 > machine or on a remote machine to prepare servers or other
@@ -282,7 +282,7 @@ $ terraform destroy -target aws_s3_bucket.my_bucket
 > Note: Provisioners should only be used as a last resort. For most
 > common situations there are better alternatives.
 
-# file Provisioner
+### file Provisioner
 
 > The file provisioner is used to copy files or directories from the
 > machine executing
@@ -296,7 +296,7 @@ $ terraform destroy -target aws_s3_bucket.my_bucket
      destination = "/etc/myapp.conf"
   }
 ```
-# local-exec Provisioner
+### local-exec Provisioner
 
 > The local-exec provisioner requires no other configuration, but most
 > other provisioners must connect to the remote system using SSH or
@@ -308,7 +308,7 @@ $ terraform destroy -target aws_s3_bucket.my_bucket
  }
  }
 ```
-# remote-exec Provisioner
+### remote-exec Provisioner
 
 > The remote-exec provisioner invokes a script on a remote resource
 > after it is created. This can be used to run a configuration
@@ -323,7 +323,7 @@ $ terraform destroy -target aws_s3_bucket.my_bucket
   }
 }
 ```
-# Creation-time Provisioners
+### Creation-time Provisioners
 
 > By default, provisioners run when the resource they are defined within
 > is created. Creation-time provisioners are only run during creation,
@@ -332,12 +332,12 @@ $ terraform destroy -target aws_s3_bucket.my_bucket
 > resource is marked as tainted. A tainted resource will be planned for
 > destruction and recreation upon the next terraform apply
 
-# Destroy-time Provisioners
+### Destroy-time Provisioners
 
 > if **when = "destroy"** is specified, the provisioner will run when the
 > resource it is defined within is destroyed.
 
-# Other Sub-commands Terraform Format
+## Other Sub-commands Terraform Format
 
 > The terraform fmt command is used to rewrite Terraform configuration
 > files to a canonical format and style.
@@ -345,7 +345,7 @@ $ terraform destroy -target aws_s3_bucket.my_bucket
 > For use-case, where all configurations written by team members needs
 > to have a proper style of code, terraform fmt can be used.
 
-# Terraform Taint
+### Terraform Taint
 
 > The terraform taint command manually marks a Terraform-managed
 > resource as tainted, forcing it to be destroyed and recreated on the
@@ -363,12 +363,12 @@ $ terraform destroy -target aws_s3_bucket.my_bucket
 > 
 > module.foo.module.bar.aws_instance.baz
 
-# Terraform Untaint
+### Terraform Untaint
 
 > The terraform untaint command manually unmark a Terraform-managed
 > resource as tainted, restoring it as the primary instance in state.
 
-# Terraform Import
+### Terraform Import
 
 > Terraform can import existing infrastructure.
 > 
@@ -384,7 +384,7 @@ $ terraform destroy -target aws_s3_bucket.my_bucket
 > 
 > terraform import aws_instance.myec2 instance-id
 
-# Terraform Show
+### Terraform Show
 
 > The terraform show command is used to provide human-readable output
 > from a state or plan file.
@@ -394,16 +394,16 @@ terraform show -json
 >It will show a JSON representation of the plan,
 > configuration, and current state.
 
-# Terraform plan -destroy
+### Terraform plan -destroy
 
 > The behaviour of any terraform destroy command can be previewed at any
 > time with an equivalent **terraform plan -destroy** command.
 
-# Variables
+## Variables
 
 > Variables play an important part in Terraform configuration when you want to manage infrastructure.
 
-# Variable Types
+### Variable Types
 
 > Strings, Numbers, Boolean, List, or Maps. We can define a default value.
 > 
@@ -435,7 +435,7 @@ terraform show -json
 ``` 
 > use **var.ami_ids["paris"]** to fetch the corresponding value.
 
-# Structural Data Types
+### Structural Data Types
 
 > A structural type allows multiple values of several distinct types to
 > be grouped together as a single value.
@@ -443,7 +443,7 @@ terraform show -json
 > List contains multiple values of the same type while objects can
 > contain multiple values of different types.
 
-# Input Variables
+### Input Variables
 
 > Input variables serve as parameters for a Terraform module, allowing
 > aspects of the module to be customized without altering the module’s
@@ -471,7 +471,7 @@ terraform show -json
 ``` 
 > The description should concisely explain the purpose of the variable and what kind of value is expected.
 
-# Assigning Values to Input Variables
+### Assigning Values to Input Variables
 
 > When variables are declared in a module or configurations, they can be set in a number of ways.
 
@@ -487,7 +487,7 @@ terraform show -json
  terraform apply -var='image_id_list=["ami-abc123","ami- def456"]'
  terraform apply -var='image_id_map={"us-east-1":"ami-abc123","us-east-2":"ami-def456"}'
 ```
-# TFVARS files
+### TFVARS files
 
 > To set lots of variables, it is more convenient to specify their values in a variable definitions file 
 > (with a filename ending in either .tfvars or .tfvars.json) and then specify that file on the command line with -var-file:
@@ -495,7 +495,7 @@ terraform show -json
 ```shell
 $ terraform apply -var-file="testing.tfvars"
 ```
-# Auto tfvars files
+### Auto tfvars files
 
 > Terraform also automatically loads a number of variable definitions files if they are present:
 
@@ -503,7 +503,7 @@ $ terraform apply -var-file="testing.tfvars"
 
   - Any files with names ending in or .auto.tfvars.json.
 
-# Environment Variables
+### Environment Variables
 
 > As a fallback for the other ways of defining variables, terraform
 > searches the environment of its own process for environment variables
@@ -513,7 +513,7 @@ $ export TF_VAR_image_id=ami-abc123
 $ terraform plan
 ```
 
-# Variable Definition Precedence
+### Variable Definition Precedence
 
 > Terraform loads variables in the following order, with later sources taking precedence over earlier ones:
 
@@ -531,7 +531,7 @@ $ terraform plan
 
 > If the same variable is assigned multiple values, terraform uses the last value it finds.
 
-# Output Values
+## Output Values
 
 > The terraform output command is used to extract the value of an output variable from the state file.
 ```hcl
@@ -545,7 +545,7 @@ $ terraform plan
 ```
 
 
-# Local Values
+## Local Values
 
 > A local value assigns a name to an expression, allowing it to be used multiple times within a module without repeating it.
  The expression of a local value can refer to other locals, but as usual reference cycles are not allowed. 
@@ -557,7 +557,7 @@ $ terraform plan
    instance_ids = concat(aws_instance.blue.*.id,aws_instance.green.*.id)
  }
 ```
-# Data Source
+## Data Source
 
 > Data sources allow data to be fetched or computed for use elsewhere in Terraform configuration.
 ```hcl
@@ -572,7 +572,7 @@ $ terraform plan
 ```
 > Reads from a specific data source (aws\_ami) and exports results under “app_ami”
 
-# Dependencies
+## Dependencies
 
 > Explicitly specifying a dependency is only necessary when a resource relies on some other resource’s behaviour but doesn’t access any of that resource’s data in its arguments.
 ```hcl
@@ -582,7 +582,7 @@ $ terraform plan
    depends_on    = [aws_iam_role_policy.example]
  }
 ```
-# Workspace
+## Workspace
 
 > Terraform starts with a single workspace named “default”.
 > 
@@ -592,7 +592,7 @@ $ terraform plan
 > For local states, terraform stores the workspace states in a directory
 > called **terraform.tfstate.d**.
 
-# Workspace commands
+### Workspace commands
 
 - The terraform workspace new command is used to create a new
     workspace and switched to a new workspace.
@@ -626,7 +626,7 @@ $ terraform plan
 
 > Note: Terraform Cloud and Terraform CLI both have features called “workspaces,” but they’re slightly different.
 
-# States
+## States
 
 > Terraform uses state to keep track of the infrastructure it manages.
 > To use Terraform effectively, you must keep your state accurate and
@@ -653,7 +653,7 @@ $ terraform plan
 > well as the -target flag to work around this. In these scenarios, the
 > cached state is treated as the record of truth.
 
-# State Management State Locking
+### State Management State Locking
 
 > State locking happens automatically on all operations that could write
 > state. You won’t see any message that it is happening. If state
@@ -667,7 +667,7 @@ $ terraform plan
 ```shell 
 $ terraform force-unlock [options] LOCK_ID [DIR]
 ```
-# Sensitive Data
+## Sensitive Data
 
 > Terraform state can contain sensitive data, e.g. database password etc.
  When using a remote state, the state is only ever held in memory when used by Terraform.
@@ -682,12 +682,12 @@ $ terraform force-unlock [options] LOCK_ID [DIR]
    sensitive   = true
  }
 ```
-# Backend Management
+## Backend Management
 
 > A backend in Terraform determines how state is loaded and how an operation such as apply is executed.
 > Terraform must initialize any configured backend before use.
 
-# Local
+### Local
 
 > By default, terraform uses the “local” backend. After running first
 > terraform apply the **terraform.tfstate** file created in the same
@@ -704,7 +704,7 @@ $ terraform force-unlock [options] LOCK_ID [DIR]
    }
  }
 ```
-# Remote
+### Remote
 
 > When working with Terraform in a team, the use of a local file makes
 > Terraform usage complicated because each user must make sure they
@@ -727,7 +727,7 @@ $ terraform force-unlock [options] LOCK_ID [DIR]
 ```shell
 $ terraform init -backend-config=backend.hcl
 ```
-# Standard Backend Types AWS S3 bucket.
+### Standard Backend Types AWS S3 bucket.
 
 > AWS S3 is typically the best bet as a remote backend for the following
 > reason
@@ -758,7 +758,7 @@ $ terraform init -backend-config=backend.hcl
 > 
 > Note: GitHub is not supported as backend type
 
-# Terraform State commands
+### Terraform State commands
 
 > terraform state list : List resources within terraform state.
 ```shell
@@ -784,12 +784,12 @@ terraform state rm
 ```shell
 terraform state show
 ```
-# Modules
+## Modules
 
 > A module is a simple directory that contains other .tf files. Using
 > modules we can make the code reusable. Modules are local or remote.
 
-# Calling Child Modules
+### Calling Child Modules
 
 > Input variables to accept values from the calling module.
 > 
@@ -834,7 +834,7 @@ terraform state show
 > such as the Terraform Registry or Terraform Cloud’s private module
 > registry.
 
-# Debugging in Terraform
+## Debugging in Terraform
 
 > Terraform has detailed logs that can be enabled by setting the
 > **TF_LOG** environment variable to any value.
@@ -848,7 +848,7 @@ $ export TF_LOG=TRACE
 ```shell
 $ export TF_LOG_PATH=./terraform.log
 ```
-# Terraform Functions
+## Terraform Functions
 
 > The Terraform language includes a number of built-in functions that
 > you can use to transform and combine values.
@@ -865,13 +865,13 @@ $ export TF_LOG_PATH=./terraform.log
 > 
 > what?
 
-# Count and Count Index
+## Count and Count Index
 
 > The count parameter on resources can simplify configurations and let you scale resources by simply incrementing a number.
 > In resource blocks where the count is set, an additional count object (count.index) is available in expressions, so that you can modify the configuration of each instance.
 
 
-# Terraform Cloud
+## Terraform Cloud
 
 > Terraform Cloud (TFC) is a free to use, self-service SaaS platform
 > that extends the capabilities of the open source Terraform CLI and
@@ -894,7 +894,7 @@ $ export TF_LOG_PATH=./terraform.log
 > Note: Terraform Cloud always encrypts the state at rest and protects
 > it with TLS in transit.
 
-# Terraform Enterprise
+## Terraform Enterprise
 
 > Terraform Enterprise provides several added advantages compared to
 > Terraform Cloud.
@@ -912,7 +912,7 @@ $ export TF_LOG_PATH=./terraform.log
 > Team & Governance features are not available for Terraform Cloud Free
 > (Paid)
 
-# Miscellaneous
+## Miscellaneous
 
 1.  Terraform Cloud supports the following VCS providers: GitHub,
     Gitlab, Bitbucket, and Azure DevOps
@@ -957,7 +957,7 @@ $ export TF_LOG_PATH=./terraform.log
 > Non-blocked action: - terraform fmt, terraform validate, terraform
 > state list
 > 
-# Exam Tip:-
+## Exam Tip:-
 > 
 > Even though this exam is multiple-choice questions, it requires
 > intense practice. Please attempt this exam only if you have done
