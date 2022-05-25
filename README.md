@@ -418,8 +418,8 @@ terraform show -json
 > For example, to access the 0 position is var.mylist[0]
 ```hcl
  variable "mylist" {
- type = list(string)
- default = \["Value1", "Value2"\]
+ type    = list(string)
+ default = ["Value1", "Value2"]
  }
 ``` 
 > Map: **Map** is a Key-Value pair. Key is needed to access the value.
@@ -427,9 +427,9 @@ terraform show -json
  variable "ami_ids" {
  type = map
  default = {
- "mumbai" = "image-abc"
- "germany" = "image-def"
- "paris" = "image-xyz"
+   "mumbai"  = "image-abc"
+   "germany" = "image-def"
+   "paris"   = "image-xyz"
  }
  }
 ``` 
@@ -536,10 +536,11 @@ $ terraform plan
 > The terraform output command is used to extract the value of an output variable from the state file.
 ```hcl
  resource "aws_instance" "myec2" {
- ami = var.image\_id
- instance_type = "t2.micro"
- }output "instance_id" {
- value = aws_instance.myec2.id
+   ami = var.image_id
+   instance_type = "t2.micro"
+ }
+ output "instance_id" {
+   value = aws_instance.myec2.id
  }
 ```
 
@@ -553,7 +554,7 @@ $ terraform plan
 ```hcl
  locals {
  # Ids for multiple sets of EC2 instances, merged together
- instance_ids = concat(aws_instance.blue.*.id,aws_instance.green.*.id)
+   instance_ids = concat(aws_instance.blue.*.id,aws_instance.green.*.id)
  }
 ```
 # Data Source
@@ -576,9 +577,9 @@ $ terraform plan
 > Explicitly specifying a dependency is only necessary when a resource relies on some other resource’s behaviour but doesn’t access any of that resource’s data in its arguments.
 ```hcl
  resource "aws_instance" "example" { 
- ami           = "ami-a1b2c3d4"
- instance_type = "t2.micro"
- depends_on    = [aws_iam_role_policy.example]
+   ami           = "ami-a1b2c3d4"
+   instance_type = "t2.micro"
+   depends_on    = [aws_iam_role_policy.example]
  }
 ```
 # Workspace
@@ -676,9 +677,9 @@ $ terraform force-unlock [options] LOCK_ID [DIR]
 > However, output values are still recorded in the state and so will be visible to anyone who is able to access the state data.
 ```hcl 
  output "db_password" {
- value       = aws_db_instance.db.password
- description = "The password for logging in to the database."
- sensitive   = true
+   value       = aws_db_instance.db.password
+   description = "The password for logging in to the database."
+   sensitive   = true
  }
 ```
 # Backend Management
@@ -698,9 +699,9 @@ $ terraform force-unlock [options] LOCK_ID [DIR]
 > state using system APIs, and performs operations locally.
 ```hcl 
  terraform {
- backend "local" {
- path = "relative/path/to/terraform.tfstate"
- }
+   backend "local" {
+     path = "relative/path/to/terraform.tfstate"
+   }
  }
 ```
 # Remote
@@ -714,7 +715,7 @@ $ terraform force-unlock [options] LOCK_ID [DIR]
 > store, which can then be shared between all members of a team.
 ```hcl 
  terraform {
- backend "remote" {}
+   backend "remote" {}
  }
 ```
 > This is called **partial configuration**
@@ -740,12 +741,12 @@ $ terraform init -backend-config=backend.hcl
   - It supports versioning, so you can roll back to an older version.
 ```hcl 
  terraform {
- backend "s3" {
- bucket         = "mybucket"
- key            = "path/to/my/key"
- region         = "us-east-1" 
- dynamodb_table = "terraform-locks"
- encrypt        = true
+   backend "s3" {
+     bucket         = "mybucket"
+     key            = "path/to/my/key"
+     region         = "us-east-1" 
+     dynamodb_table = "terraform-locks"
+     encrypt        = true
  }
  }
 ``` 
@@ -799,28 +800,28 @@ terraform state show
 > will manage.
 ```hcl 
  variable "image_id" {
- type = string
+   type = string
  }
  resource "aws_instance" "myec2" {
- ami = var.image_id
- instance_type = "t2.micro"
+   ami = var.image_id
+   instance_type = "t2.micro"
  }
  output "instance_ip_addr" {
- value = aws_instance.myec2.private_ip
+   value = aws_instance.myec2.private_ip
  }
 ```
 > Call to the module example:
 ```hcl
  module "dbserver" {
- source   = "./db"
- image_id = "ami-0528a5175983e7f28"
+   source   = "./db"
+   image_id = "ami-0528a5175983e7f28"
  }
 ```
 > Module outputs are very similar to module inputs, an example in a
 > module output:
 ```hcl
  output "privateip" {
- value = aws\_instance.myec2.private\_ip
+   value = aws_instance.myec2.private_ip
  }
 ```
 > It is recommended to explicitly constraining the acceptable version
